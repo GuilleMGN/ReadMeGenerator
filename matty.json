@@ -1,0 +1,14 @@
+{
+	"name": "Matty",
+	"sections": [
+		"Description",
+		"Table of Contents"
+	],
+	"additional": [
+		"License",
+		"Contributing",
+		"Tests",
+		"Questions"
+	],
+	"contact": "phone"
+}
