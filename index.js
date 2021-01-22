@@ -50,32 +50,30 @@ inquirer
             message: "Please enter your email address: ",
         },
     ])
-    .then((data) => {
-        console.log(data.title);
-        console.log(data.sections);
-        console.log(data.additional);
-        console.log(data.license);
-        
+    .then((data) => {      
         const filename = generateReadMe(data);
         fs.writeFile("README.md", filename, (err) =>
             err ? console.log(err) : console.log('Success!')
         );
     });
-const generateReadMe = ({title, sections, additional, license}) => {
-    // for (var i = 0; i < sections.length; i++) {
-    //     sections[i] = sections[i].replace(',', '\n## ');
-    //     return sections;
-    // }
-    // for (var i = 0; i < additional.length; i++) {
-    //     additional[i] = additional[i].replace(',', '\n## ');
-    //     return additional;
-    // }
-    // sections.replace(',', '\n## ');
-    // additional.replace(',', '\n## ');
+const generateReadMe = ({title, description, installation, usage, contribution, tests, license, github, email}) => {
     const readme =
 `# ${title}
-## ${sections.toString().replace(',', '\n## ').replace(',', '\n## ').replace(',', '\n## ').replace(',', '\n## ')}
-## ${additional.toString().replace(',', '\n## ').replace(',', '\n## ').replace(',', '\n## ').replace(',', '\n## ')}
-## License: ${license}`
+
+## ${description}
+
+## ${installation}
+
+## ${usage}
+
+## ${contribution}
+
+## ${tests}
+
+## License: ${license}
+
+## ${github}
+
+## ${email}`
     return readme;
 }
