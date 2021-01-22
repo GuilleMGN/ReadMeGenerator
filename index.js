@@ -50,30 +50,48 @@ inquirer
             message: "Please enter your email address: ",
         },
     ])
-    .then((data) => {      
+    .then((data) => {
         const filename = generateReadMe(data);
-        fs.writeFile("README.md", filename, (err) =>
+        fs.writeFile("GeneratedREADME.md", filename, (err) =>
             err ? console.log(err) : console.log('Success!')
         );
     });
-const generateReadMe = ({title, description, installation, usage, contribution, tests, license, github, email}) => {
+const generateReadMe = ({ title, description, installation, usage,
+    contribution, tests, license, github, email }) => {
+    // Generates README format
     const readme =
 `# ${title}
 
-## ${description}
+## Description 
+${description}
 
-## ${installation}
+## Table of Contents
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [Tests](#Tests)
+* [License](#license)
+* [Questions](#questions)
 
-## ${usage}
+## Installation
+${installation}
 
-## ${contribution}
+## Usage
+${usage}
 
-## ${tests}
+## Contributing
+${contribution}
 
-## License: ${license}
+## Tests
+${tests}
 
-## ${github}
+## License 
+${license}
 
-## ${email}`
+## Questions
+Feel free to contact me: 
+github.com/${github.trim()}
+${email.trim()}`
     return readme;
 }
