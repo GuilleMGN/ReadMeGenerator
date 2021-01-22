@@ -1,6 +1,6 @@
-# MATT
+# TEST
 ## Description
-## Table of Contents,Installation,Usage
+## Table of Contents
 ## License
-## Contributing,Tests,Questions
-## License: Apache License 2.0
+## Questions
+## License: GNU General Public License v3.0
