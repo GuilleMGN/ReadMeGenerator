@@ -1,7 +1,7 @@
-# Generated ReadMe
+# Test README
 
 ## Description 
-This is the description for the project I have created
+Test descirption
 
 ## Table of Contents
 * [Description](#description)
@@ -13,21 +13,23 @@ This is the description for the project I have created
 * [Questions](#questions)
 
 ## Installation
-The instructions to obtain this project is go to my repo and clone it using git clone command in gitbash
+Test installation instructions
 
 ## Usage
-to use this project you must open it in terminal or Git Bash and run the commant 'node index.js'
+Test usage information
 
 ## Contributing
-I made this project myself. The other technologies used were using npm i inquirer which also needs to be called
+test contribtuion uguidelnines
 
 ## Tests
-in order to have it running properly, install the packages and inquirer as well as node.js then run the command node index.js
+test test instricutinj
 
 ## License 
-MIT License
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Questions
 Feel free to contact me: 
-github.com/GuilleMGN
-matthewguillen777@gmail.com
+### GitHub: 
+www.github.com/GuilleMGN
+### Email: 
+email@example.com
