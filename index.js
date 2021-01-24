@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const axios = require('axios').default;
 const fs = require('fs');
 
 inquirer
@@ -7,6 +8,12 @@ inquirer
             type: 'input',
             name: 'title',
             message: "Please enter your project's title: ",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter a valid title! ";
+            }
         },
         {   // Ask for DESCRIPTION
             type: 'input',
@@ -38,11 +45,11 @@ inquirer
             message: 'Which license would you like to add?',
             name: 'license',
             choices: [
-                'Apache License 2.0', 
-                'GNU General Public License v3.0', 
-                'MIT License', 
-                'Eclipse Public License 2.0', 
-                'Boost Software License 1.0', 
+                'Apache License 2.0',
+                'GNU General Public License v3.0',
+                'MIT License',
+                'Eclipse Public License 2.0',
+                'Boost Software License 1.0',
                 'IBM Public License Version 1.0',
                 'Mozilla Public License 2.0'
             ],
@@ -56,6 +63,13 @@ inquirer
             type: 'input',
             name: 'email',
             message: "Please enter your email address: ",
+            validate: answer => {
+                const pass = answer.match(/\S+@\S+\.\S+/);
+                if (pass) {
+                    return true;
+                }
+                return "Please enter a valid email address! ";
+            }
         },
     ])
     .then((data) => {
@@ -64,9 +78,9 @@ inquirer
             err ? console.log(err) : console.log('Success!')
         );
     });
-const generateReadMe = ({ title, description, installation, 
+const generateReadMe = ({ title, description, installation,
     usage, contribution, tests, license, github, email }) => {
-    // License Badges
+    // License Badges based on user selection
     switch (license) {
         case 'Apache License 2.0':
             license = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
@@ -89,12 +103,12 @@ const generateReadMe = ({ title, description, installation,
         case 'Mozilla Public License 2.0':
             license = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)';
             break;
-        default: 
+        default:
             license = "Couldn't load License badge. ";
     }
+    // axios.get(`https://github.com/${github}?tab=repositories`).then((res) => console.log(res));
     // Generates README format
-    const readme =
-`# ${title}
+    const readme = `# ${title}
 
 ## Description 
 ${description}
@@ -124,10 +138,11 @@ ${tests}
 ${license}
 
 ## Questions
-Feel free to contact me: 
 ### GitHub: 
 www.github.com/${github.trim()}
 ### Email: 
-${email.trim()}`
+${email.trim()}
+
+Copyright © 2021`
     return readme;
 }
