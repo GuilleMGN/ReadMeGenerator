@@ -73,6 +73,7 @@ inquirer
         },
     ])
     .then((data) => {
+        
         const filename = generateReadMe(data);
         fs.writeFile("GeneratedREADME.md", filename, (err) =>
             err ? console.log(err) : console.log('Success!')
@@ -106,7 +107,6 @@ const generateReadMe = ({ title, description, installation,
         default:
             license = "Couldn't load License badge. ";
     }
-    // axios.get(`https://github.com/${github}?tab=repositories`).then((res) => console.log(res));
     // Generates README format
     const readme = `# ${title}
 
@@ -146,3 +146,4 @@ ${email.trim()}
 Copyright © 2021`
     return readme;
 }
+// End README format
